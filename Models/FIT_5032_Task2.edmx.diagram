@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b4e09f686e03478bbc1d5e661f0bdb54" Name="Diagram1" >
+        <EntityTypeShape EntityType="FIT_5032_Task2.User" Width="1.5" PointX="1.875" PointY="1.125" />
+        <EntityTypeShape EntityType="FIT_5032_Task2.Booking" Width="1.5" PointX="5.375" PointY="0.5" />
+        <EntityTypeShape EntityType="FIT_5032_Task2.FeedBack" Width="1.5" PointX="5.25" PointY="4" />
+        <EntityTypeShape EntityType="FIT_5032_Task2.Restaurant" Width="1.5" PointX="9.625" PointY="1.375" />
+        <AssociationConnector Association="FIT_5032_Task2.UserBooking" />
+        <AssociationConnector Association="FIT_5032_Task2.BookingRestaurant" />
+        <AssociationConnector Association="FIT_5032_Task2.BookingFeedBack" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

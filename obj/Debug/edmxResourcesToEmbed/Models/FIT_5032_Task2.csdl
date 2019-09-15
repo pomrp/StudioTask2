@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FIT_5032_Task2" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="FIT_5032_Task2Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserSet" EntityType="FIT_5032_Task2.User" />
+    <EntitySet Name="BookingSet" EntityType="FIT_5032_Task2.Booking" />
+    <EntitySet Name="FeedBackSet" EntityType="FIT_5032_Task2.FeedBack" />
+    <EntitySet Name="RestaurantSet" EntityType="FIT_5032_Task2.Restaurant" />
+    <AssociationSet Name="UserBooking" Association="FIT_5032_Task2.UserBooking">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Booking" EntitySet="BookingSet" />
+    </AssociationSet>
+    <AssociationSet Name="BookingRestaurant" Association="FIT_5032_Task2.BookingRestaurant">
+      <End Role="Booking" EntitySet="BookingSet" />
+      <End Role="Restaurant" EntitySet="RestaurantSet" />
+    </AssociationSet>
+    <AssociationSet Name="BookingFeedBack" Association="FIT_5032_Task2.BookingFeedBack">
+      <End Role="Booking" EntitySet="BookingSet" />
+      <End Role="FeedBack" EntitySet="FeedBackSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" />
+    <Property Name="LastName" Type="String" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" />
+    <NavigationProperty Name="Booking" />
+    <NavigationProperty Name="Booking1" Relationship="FIT_5032_Task2.UserBooking" FromRole="User" ToRole="Booking" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="String" Nullable="false" />
+    <Property Name="Phone_No" Type="Int16" Nullable="false" />
+    <Property Name="Booking_Time" Type="DateTime" Nullable="false" />
+    <Property Name="NofCustomer" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="User" />
+    <NavigationProperty Name="FeedBack" />
+    <NavigationProperty Name="Restaurant" />
+    <NavigationProperty Name="User1" Relationship="FIT_5032_Task2.UserBooking" FromRole="Booking" ToRole="User" />
+    <Property Name="UserId1" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Restaurant1" Relationship="FIT_5032_Task2.BookingRestaurant" FromRole="Booking" ToRole="Restaurant" />
+    <NavigationProperty Name="FeedBack1" Relationship="FIT_5032_Task2.BookingFeedBack" FromRole="Booking" ToRole="FeedBack" />
+  </EntityType>
+  <EntityType Name="FeedBack">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Input" Type="String" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Booking" />
+    <Property Name="Rate" Type="Binary" Nullable="false" />
+    <Property Name="BookingID" Type="String" Nullable="false" />
+    <NavigationProperty Name="Booking1" Relationship="FIT_5032_Task2.BookingFeedBack" FromRole="FeedBack" ToRole="Booking" />
+    <Property Name="BookingId1" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Restaurant">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Telephone_No" Type="Int16" Nullable="false" />
+    <Property Name="Address" Type="String" Nullable="false" />
+    <NavigationProperty Name="Booking" />
+    <NavigationProperty Name="Booking1" Relationship="FIT_5032_Task2.BookingRestaurant" FromRole="Restaurant" ToRole="Booking" />
+    <Property Name="BookingId" Type="Int32" Nullable="false" />
+    <Property Name="BookingId1" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="UserBooking">
+    <End Type="FIT_5032_Task2.User" Role="User" Multiplicity="1" />
+    <End Type="FIT_5032_Task2.Booking" Role="Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="UserId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingRestaurant">
+    <End Type="FIT_5032_Task2.Booking" Role="Booking" Multiplicity="1" />
+    <End Type="FIT_5032_Task2.Restaurant" Role="Restaurant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Restaurant">
+        <PropertyRef Name="BookingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BookingFeedBack">
+    <End Type="FIT_5032_Task2.Booking" Role="Booking" Multiplicity="1" />
+    <End Type="FIT_5032_Task2.FeedBack" Role="FeedBack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FeedBack">
+        <PropertyRef Name="BookingId1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

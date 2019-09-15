@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+  <Alias Key="Model" Value="FIT_5032_Task2" />
+  <Alias Key="Target" Value="FIT_5032_Task2.Store" />
+  <EntityContainerMapping CdmEntityContainer="FIT_5032_Task2Container" StorageEntityContainer="FIT_5032_Task2TargetContainer" />
+</Mapping>
